@@ -2,179 +2,235 @@ import { useState } from 'react'
 
 const STEPS = [
   {
-    title: '1) Prep a shared workspace',
-    points: [
-      'Put every required reference file inside the same project folder used by OpenClaw.',
-      'Use workspace-relative paths in prompts (for example: ./references/OpenClaw_Guidelines_Reference.md).',
-      'Do not rely on external OneDrive/Desktop paths during model runs.',
+    title: '1) Open PowerShell correctly (Admin + Non-Admin)',
+    why: 'You need one Admin terminal for machine setup checks and one normal terminal for project work.',
+    actions: [
+      'Press Start, type "PowerShell".',
+      'Right-click "Windows PowerShell" -> Run as administrator.',
+      'Keep this Admin window open for system checks only.',
+      'Open a second normal PowerShell window (not admin) for project commands.',
+    ],
+    commands: [
+      'whoami',
+      '$PSVersionTable.PSVersion',
+      'Get-ExecutionPolicy -List',
+    ],
+    expected: [
+      'You can run commands in both windows.',
+      'Admin window opens without permission errors.',
+      'Normal window is used for repo commands.',
+    ],
+    fix: [
+      'If "Run as administrator" is blocked, sign in with an account that has local admin rights.',
+      'If scripts are blocked, run: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned (only in your own account).',
     ],
   },
   {
-    title: '2) Set baseline parity before each model',
-    points: [
-      'Reset both model environments so inbox, calendar, and starting files are equivalent.',
-      'Use the same initial prompt text for Model A and Model B.',
-      'Keep the same context volume and same attached files for both runs.',
+    title: '2) Prepare workspace and copy reference file into project',
+    why: 'OpenClaw/Claude Code should read files from workspace-relative paths, not random OneDrive absolute paths.',
+    actions: [
+      'In normal PowerShell, move into project folder.',
+      'Create a references folder in the repo.',
+      'Copy the guidelines markdown into that references folder.',
+    ],
+    commands: [
+      'cd C:\\Users\\enter\\OpenClaw-Academy',
+      'New-Item -ItemType Directory -Force .\\references | Out-Null',
+      'Copy-Item "C:\\Users\\enter\\OneDrive\\Documents\\Project101\\OpenClaw_Guidelines_Reference.md" ".\\references\\OpenClaw_Guidelines_Reference.md" -Force',
+      'Test-Path .\\references\\OpenClaw_Guidelines_Reference.md',
+    ],
+    expected: [
+      'Final Test-Path output is True.',
+      'File exists at ./references/OpenClaw_Guidelines_Reference.md inside repo.',
+    ],
+    fix: [
+      'If copy fails, verify source path exactly and remove accidental quotes/spaces.',
+      'If OneDrive is offline, open file once in OneDrive so it is downloaded locally, then copy again.',
     ],
   },
   {
-    title: '3) Run with required constraints in prompt',
-    points: [
-      'Explicitly instruct the model to create and update MEMORY.md.',
-      'Explicitly require use of installed OpenClaw Skills.',
-      'Require multi-stage flow: data acquisition, reasoning, output artifact generation.',
+    title: '3) Start Claude Code from the project directory',
+    why: 'Claude should operate inside the exact workspace where OpenClaw files live.',
+    actions: [
+      'In normal PowerShell, stay in C:\\Users\\enter\\OpenClaw-Academy.',
+      'Launch Claude Code from this directory.',
+      'Paste the install prompt exactly (provided below).',
+    ],
+    commands: [
+      'cd C:\\Users\\enter\\OpenClaw-Academy',
+      'claude',
+    ],
+    expected: [
+      'Claude starts with current working directory = OpenClaw-Academy.',
+      'Claude confirms it will research current OpenClaw setup before install.',
+    ],
+    fix: [
+      'If claude is not recognized, install/update Claude CLI first, then relaunch terminal.',
+      'If Claude starts in wrong folder, exit and relaunch after cd to project.',
     ],
   },
   {
-    title: '4) Preserve session for trace extraction',
-    points: [
-      'When done, close the tab normally (do not force-end session).',
-      'Use Collect Traces & Continue in the task flow.',
-      'If needed, use Restart Session to continue, or Start Fresh only for full reset.',
+    title: '4) Force provider setup: OpenRouter only',
+    why: 'Avoid wrong billing/auth path and keep setup aligned with OpenClaw guidance.',
+    actions: [
+      'Create OpenRouter API key at openrouter.ai.',
+      'When Claude asks, provide key and explicitly set model provider to OpenRouter.',
+      'Use a concrete starter model, then run a health-check call.',
+    ],
+    commands: [
+      'Model target: google/gemma-3-27b-it:free',
+      'Fallback target: deepseek/deepseek-chat-v3-0324:free (or another available free model)',
+    ],
+    expected: [
+      'Claude confirms provider = OpenRouter.',
+      'Health check returns valid model output (not auth failure).',
+    ],
+    fix: [
+      'If auth fails, rotate key and retry.',
+      'If rate-limited, swap to another free model and rerun health check.',
     ],
   },
   {
-    title: '5) Package outputs cleanly',
-    points: [
-      'Download workspace files for each model and trajectory.',
-      'Label folders clearly by model and trajectory type.',
-      'Zip the full package and upload.',
+    title: '5) Connect Telegram bot end-to-end',
+    why: 'OpenClaw must receive and send real messages through your bot channel.',
+    actions: [
+      'In Telegram, open @BotFather and run /newbot.',
+      'Copy bot token and provide token to Claude during setup.',
+      'Bind bot access to your user/chat ID only.',
+      'Send test message: "hello test".',
+    ],
+    commands: [
+      'Telegram manual flow: @BotFather -> /newbot -> token',
+      'In Claude: request strict allowed-user binding',
+    ],
+    expected: [
+      'Bot replies to your test message.',
+      'Logs show inbound + outbound events.',
+      'Unauthorized users are blocked.',
+    ],
+    fix: [
+      'If silent, re-check token and chat binding.',
+      'If wrong user can access bot, lock allowed-user config and retest.',
+    ],
+  },
+  {
+    title: '6) Benchmark-safe run policy (A/B parity + MEMORY)',
+    why: 'Trajectory quality is invalid if model contexts diverge or memory rules are skipped.',
+    actions: [
+      'Use exactly the same initial prompt for Model A and Model B.',
+      'Reset both environments to equivalent baseline before each run.',
+      'Explicitly require MEMORY.md creation in the prompt.',
+      'Require at least one installed skill usage.',
+    ],
+    commands: [
+      'Prompt line: "Create MEMORY.md in workspace and store reusable facts there."',
+      'Prompt line: "Use at least one installed OpenClaw Skill during execution."',
+    ],
+    expected: [
+      'Both models start from equivalent state.',
+      'MEMORY.md appears during run.',
+      'Trajectories are comparable.',
+    ],
+    fix: [
+      'If one run had extra context, reset both and rerun.',
+      'If MEMORY.md missing, stop and rerun with explicit memory instruction.',
+    ],
+  },
+  {
+    title: '7) Session-safe extraction and packaging',
+    why: 'Forcing session end can break trace extraction.',
+    actions: [
+      'After run, close tab normally (do not force-end).',
+      'Use "Collect Traces & Continue".',
+      'Download all workspace outputs per model and Silver trajectory when used.',
+      'Zip folders with clear naming and upload.',
+    ],
+    commands: [
+      'Folder convention: .\\exports\\model-a\\, .\\exports\\model-b\\, .\\exports\\silver\\',
+      'Zip name convention: openclaw_submission_YYYY-MM-DD.zip',
+    ],
+    expected: [
+      'Each model has trajectory file + output artifacts.',
+      'Zip includes all required folders before upload.',
+    ],
+    fix: [
+      'If traces missing, reopen with Restart Session and collect again.',
+      'If files are mixed, rebuild folder mapping and re-zip.',
     ],
   },
 ]
 
-const FLOWS = {
-  claude: {
-    title: 'Claude Code Flow',
-    points: [
-      'Open terminal Claude Code and ask it to research first, then install OpenClaw.',
-      'Use OpenRouter for model access, not direct Anthropic subscription keys.',
-      'Run a test ping through your connected chat channel and confirm MEMORY.md updates.',
-    ],
-  },
-  lobster: {
-    title: 'Lobster VM Flow',
-    points: [
-      'Run OpenClaw inside a dedicated VM/container so the runtime is isolated.',
-      'Keep the VM awake (or always-on host) to preserve background agent availability.',
-      'Validate parity by resetting both model environments before each trajectory run.',
-    ],
-  },
-}
-
-const PROMPT_SNIPPET = `Before starting:
-- Read ./references/OpenClaw_Guidelines_Reference.md.
-- Create MEMORY.md in the workspace and store persistent facts there.
-
-Task requirements:
-- Use at least one installed OpenClaw Skill.
-- Execute a 3-stage flow: data acquisition -> reasoning -> final artifact output.
-- Produce a concrete, verifiable artifact in the workspace with clear success criteria.`
+const INSTALL_PROMPT = `I want to install OpenClaw in this workspace.
+Research current setup documentation first, then perform install.
+Use OpenRouter for model access (not Anthropic subscription keys).
+Ask me only for secrets when needed (API keys/tokens).
+After install, run an end-to-end health check:
+1) model call succeeds
+2) Telegram bot receives + replies
+3) MEMORY.md is created in workspace.`
 
 export default function SetupClaudeCode() {
-  const [activeFlow, setActiveFlow] = useState('claude')
-  const [stepIndex, setStepIndex] = useState(0)
-  const currentStep = STEPS[stepIndex]
+  const [idx, setIdx] = useState(0)
+  const step = STEPS[idx]
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-5">
+    <div className="p-6 max-w-5xl mx-auto space-y-5">
       <div>
-        <h1 className="text-2xl font-semibold text-slate-100">OpenClaw + Claude Code Setup</h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Practical setup flow to run comparable trajectories and avoid missing-file/session issues.
-        </p>
-      </div>
-
-      <div className="rounded-2xl border border-cyan-900/40 bg-cyan-950/20 p-4 text-sm text-cyan-100">
-        Key fix: keep reference files inside the active workspace and reference them with relative paths.
+        <h1 className="text-2xl font-semibold text-slate-100">Interactive Install: OpenClaw + Claude Code</h1>
+        <p className="text-sm text-slate-500 mt-1">Explicit runbook with admin instructions, exact commands, expected outputs, and recovery paths.</p>
       </div>
 
       <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-sm font-semibold text-slate-200">Interactive Install Tutorial</h2>
-          <div className="flex items-center gap-2 text-xs">
-            <span className="animate-pulse rounded-full border border-cyan-700 bg-cyan-900/40 px-2 py-1 text-cyan-200">Claude blinking</span>
-            <span className="animate-pulse rounded-full border border-orange-700 bg-orange-900/40 px-2 py-1 text-orange-200">Lobster blinking</span>
+        <div className="flex items-center justify-between">
+          <div className="text-xs text-slate-500">Step {idx + 1} of {STEPS.length}</div>
+          <div className="flex gap-2">
+            <button onClick={() => setIdx((v) => Math.max(0, v - 1))} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 text-slate-300">Back</button>
+            <button onClick={() => setIdx((v) => Math.min(STEPS.length - 1, v + 1))} className="px-3 py-1.5 text-xs rounded-lg bg-cyan-600 text-slate-950">Next</button>
           </div>
         </div>
-        <div className="mt-3 rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-          <div className="text-xs text-slate-500">Step {stepIndex + 1} of {STEPS.length}</div>
-          <div className="text-sm font-medium text-slate-200 mt-1">{currentStep.title}</div>
-          <ul className="mt-2 space-y-1.5">
-            {currentStep.points.map((point) => (
-              <li key={point} className="text-sm text-slate-300 leading-relaxed">{point}</li>
-            ))}
-          </ul>
-          <div className="mt-3 flex gap-2">
-            <button
-              onClick={() => setStepIndex((s) => Math.max(0, s - 1))}
-              className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 text-slate-300"
-            >
-              Back
-            </button>
-            <button
-              onClick={() => setStepIndex((s) => Math.min(STEPS.length - 1, s + 1))}
-              className="px-3 py-1.5 text-xs rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950"
-            >
-              Next
-            </button>
-          </div>
-        </div>
+
+        <div className="mt-3 text-sm font-semibold text-slate-200">{step.title}</div>
+        <div className="mt-1 text-xs text-slate-400">Why: {step.why}</div>
+
+        <Block title="Actions" items={step.actions} />
+        <Code title="Commands / Inputs" lines={step.commands} />
+        <Block title="Expected result" items={step.expected} />
+        <Block title="If broken, do this" items={step.fix} />
       </div>
 
       <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">Interactive Setup Paths</h2>
-        <div className="mt-3 flex gap-2">
-          <button
-            onClick={() => setActiveFlow('claude')}
-            className={`px-3 py-2 rounded-xl text-sm border ${
-              activeFlow === 'claude'
-                ? 'border-cyan-700 bg-cyan-900/40 text-cyan-200'
-                : 'border-slate-700 text-slate-300'
-            }`}
-          >
-            Claude Code
-          </button>
-          <button
-            onClick={() => setActiveFlow('lobster')}
-            className={`px-3 py-2 rounded-xl text-sm border ${
-              activeFlow === 'lobster'
-                ? 'border-cyan-700 bg-cyan-900/40 text-cyan-200'
-                : 'border-slate-700 text-slate-300'
-            }`}
-          >
-            Lobster
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-semibold text-slate-200">Copy-ready install prompt</h2>
+          <button onClick={() => navigator.clipboard.writeText(INSTALL_PROMPT)} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 text-slate-300">
+            Copy
           </button>
         </div>
-        <div className="mt-3 rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-          <div className="text-sm font-medium text-slate-200">{FLOWS[activeFlow].title}</div>
-          <ul className="mt-2 space-y-1.5">
-            {FLOWS[activeFlow].points.map((point) => (
-              <li key={point} className="text-sm text-slate-300 leading-relaxed">{point}</li>
-            ))}
-          </ul>
-        </div>
+        <pre className="mt-3 text-xs leading-6 text-slate-300 whitespace-pre-wrap">{INSTALL_PROMPT}</pre>
       </div>
+    </div>
+  )
+}
 
-      <div className="space-y-3">
-        {STEPS.map((step) => (
-          <div key={step.title} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <h2 className="text-sm font-semibold text-slate-200">{step.title}</h2>
-            <ul className="mt-2 space-y-1.5">
-              {step.points.map((point) => (
-                <li key={point} className="text-sm text-slate-300 leading-relaxed">{point}</li>
-              ))}
-            </ul>
-          </div>
+function Block({ title, items }) {
+  return (
+    <div className="mt-3">
+      <div className="text-[11px] uppercase tracking-widest text-slate-600 mb-1.5">{title}</div>
+      <ul className="space-y-1.5">
+        {items.map((item) => (
+          <li key={item} className="text-sm text-slate-300 leading-relaxed">{item}</li>
         ))}
-      </div>
+      </ul>
+    </div>
+  )
+}
 
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">Prompt Starter</h2>
-        <pre className="mt-3 text-xs leading-6 text-slate-300 overflow-x-auto whitespace-pre-wrap">
-          {PROMPT_SNIPPET}
-        </pre>
-      </div>
+function Code({ title, lines }) {
+  return (
+    <div className="mt-3">
+      <div className="text-[11px] uppercase tracking-widest text-slate-600 mb-1.5">{title}</div>
+      <pre className="rounded-xl border border-slate-800 bg-slate-950/60 p-3 text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap">
+        {lines.join('\n')}
+      </pre>
     </div>
   )
 }

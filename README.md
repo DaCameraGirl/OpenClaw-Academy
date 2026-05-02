@@ -1,27 +1,27 @@
 # OpenClaw Academy
 
-![JavaScript 97.8%](https://img.shields.io/badge/JavaScript-97.8%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827)
-![CSS 2.0%](https://img.shields.io/badge/CSS-2.0%25-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![HTML 0.2%](https://img.shields.io/badge/HTML-0.2%25-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&pause=900&color=22D3EE&center=true&vCenter=true&width=900&lines=OpenClaw+Academy;Claude+%2B+Lobster+Mode+Activated;Build+better+tasks%2C+rubrics%2C+and+trajectories" alt="Animated title" />
+<p align="left">
+  <img src="https://img.shields.io/badge/JavaScript-97.8%25-F7DF1E?style=flat-square&logo=javascript&logoColor=111827" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/CSS-2.0%25-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS" />
+  <img src="https://img.shields.io/badge/HTML-0.2%25-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML" />
 </p>
 
-<p align="center">
-  <img alt="Claude and Lobster" src="https://img.shields.io/badge/Claude-%F0%9F%A4%96-ready-0EA5E9?style=for-the-badge" />
-  <img alt="Lobster" src="https://img.shields.io/badge/Lobster-%F0%9F%A6%9E-blinking-F97316?style=for-the-badge" />
+<p align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&pause=800&color=22D3EE&vCenter=true&width=880&lines=OpenClaw+Academy;Prompt+Forge+%2B+Rubric+Forge;Interactive+setup+for+Claude+Code+and+Lobster" alt="Animated title" />
 </p>
 
-Interactive training site for OpenClaw workflows:
-- full guidelines navigator
-- workflow and trajectory trainer
-- rubric doctor and unit test doctor
-- safety annotation study tools
-- quiz mode
-- setup path for Claude Code and Lobster flows
+<p align="left">
+  <img alt="Claude bot" width="56" height="56" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
+  <img alt="Lobster" width="56" height="56" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
+</p>
 
-## Local dev
+Interactive training app for OpenClaw onboarding tasks:
+- full guideline explorer sourced from atomic rules
+- detailed interactive install runbook (PowerShell + admin path)
+- prompt builder and rubric builder
+- rubric doctor, unit test doctor, quiz, workflow, and safety tools
+
+## Quick start
 
 ```bash
 npm install
@@ -34,8 +34,7 @@ npm run dev
 npm run build
 ```
 
-## Live site
+## Live
 
-GitHub Pages deploys from `main` via Actions:
-- workflow: `.github/workflows/deploy.yml`
 - URL: `https://dacameragirl.github.io/OpenClaw-Academy/`
+- Deploy workflow: `.github/workflows/deploy.yml`
