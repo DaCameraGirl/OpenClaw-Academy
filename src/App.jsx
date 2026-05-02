@@ -36,7 +36,7 @@ function App() {
   const Page = PAGES[page] || Home
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex">
+    <div className="min-h-screen oc-home-bg text-slate-100 flex">
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
@@ -52,7 +52,7 @@ function App() {
         onMobileClose={() => setMobileOpen(false)}
       />
 
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 bg-transparent">
         {/* Mobile topbar */}
         <div className="lg:hidden flex items-center gap-3 px-4 py-3 border-b border-slate-800 bg-slate-900">
           <button
@@ -64,7 +64,7 @@ function App() {
           <span className="text-sm font-semibold text-slate-200">OpenClaw Academy</span>
         </div>
 
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto bg-transparent">
           <Page onNavigate={setPage} />
         </main>
       </div>

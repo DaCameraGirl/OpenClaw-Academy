@@ -9,3 +9,35 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
 }
+
+@keyframes ocGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ocFloat {
+  0% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-14px) translateX(8px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes ocTwinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.oc-home-bg {
+  background: linear-gradient(130deg, #09122c, #1d1a47, #612256, #134e8e, #ed4b93);
+  background-size: 300% 300%;
+  animation: ocGradientShift 16s ease infinite;
+}
+
+.oc-blob {
+  filter: blur(30px);
+  animation: ocFloat 8s ease-in-out infinite;
+}
+
+.oc-twinkle {
+  animation: ocTwinkle 2.5s ease-in-out infinite;
+}
