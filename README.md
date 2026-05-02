@@ -1,134 +1,125 @@
-# OpenClaw Academy
-
-<p align="left">
-  <img src="https://img.shields.io/badge/JavaScript-97.8%25-F7DF1E?style=flat-square&logo=javascript&logoColor=111827" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/CSS-2.0%25-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS" />
-  <img src="https://img.shields.io/badge/HTML-0.2%25-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML" />
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=180&text=OpenClaw%20Academy&fontAlign=50&fontAlignY=35&color=0:00c6ff,30:0072ff,70:ff5f6d,100:ffc371&fontColor=ffffff&fontSize=56&desc=Interactive%20Prompt%20%2B%20Rubric%20Training&descAlign=50&descAlignY=60" alt="OpenClaw Academy banner" />
 </p>
 
-<p align="left">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&pause=800&color=22D3EE&vCenter=true&width=980&lines=OpenClaw+Academy;Prompt+Forge+%2B+Rubric+Forge;Detailed+OpenClaw+Setup+for+Claude+Code+%2B+Lobster" alt="Animated title" />
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Quicksand&weight=700&size=28&pause=700&color=F9D423&center=true&vCenter=true&width=980&lines=✨+Build+better+OpenClaw+tasks+✨;🧠+Prompt+Builder:+writes+strong+task+prompts;📏+Rubric+Builder:+checks+if+your+scoring+rules+are+valid;🌟+Twinkle+mode+enabled+🌟" alt="Animated twinkle title" />
 </p>
 
-<p align="left">
-  <img alt="Claude bot" width="64" height="64" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
-  <img alt="Lobster" width="64" height="64" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Lobster" width="64" height="64" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Claude bot" width="64" height="64" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
-  <img alt="Lobster" width="64" height="64" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-97.8%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/CSS-2.0%25-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
+  <img src="https://img.shields.io/badge/HTML-0.2%25-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML" />
 </p>
 
-OpenClaw Academy is a practical training app for writing stronger prompts, building valid rubrics, and running safer trajectory evaluations for OpenClaw tasks.
+<p align="center">
+  <img alt="Claude bot" width="60" height="60" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
+  <img alt="Lobster" width="60" height="60" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
+  <img alt="Lobster" width="60" height="60" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
+  <img alt="Claude bot" width="60" height="60" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
+  <img alt="Lobster" width="60" height="60" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
+</p>
 
-## What You Get
+---
 
-- Full Guidelines explorer sourced from atomic rules (1 through 113) in strict numeric order
-- Interactive install runbook with exact PowerShell steps, admin/non-admin guidance, verification checks, and recovery steps
-- Prompt Builder for single-turn prompt generation with parity, MEMORY, skill-use, and outcome constraints
-- Rubric Builder with enforced weights, atomicity checks, self-contained checks, and negative-criterion requirements
-- Rubric Doctor and Unit Test Doctor for linting and overfitting detection
-- Workflow trainer, quiz mode, safety annotation study modules, and examples
+## What this project is
 
-## Core Pages
+OpenClaw Academy is a training app that helps you:
 
-1. `Setup: Claude Code`
-- Full step-by-step installation runbook
-- Admin PowerShell instructions
-- Workspace and references setup
-- OpenRouter and Telegram integration flow
-- A/B parity and MEMORY run policy
+- write stronger task prompts
+- build valid scoring rubrics
+- avoid onboarding mistakes
+- compare model trajectories correctly
 
-2. `Full Guidelines`
-- Atomic Section 2 rule rendering
-- Search by number/topic text
-- Expand/collapse all
-- Strict numeric ordering toggle
+## Plain-English tool meanings
 
-3. `Prompt Builder`
-- Interactive field-driven prompt creation
-- Live constraint checks
-- Copy-ready single-turn output
+1. **Prompt Builder**
+- Helps you create a complete task prompt.
+- Checks parity, MEMORY.md requirement, skill usage, and outcome clarity.
 
-4. `Rubric Builder`
-- Criterion-by-criterion editing
-- Valid weight enforcement (`-5, -3, -1, +1, +3, +5`)
-- Positive phrasing and structure checks
-- JSON export
+2. **Rubric Builder**
+- Helps you write scoring criteria that follow your rules.
+- Checks allowed weights, positive phrasing, atomic criteria, and required negative criterion.
 
-## Install and Run Locally
+3. **Rubric Doctor / Unit Test Doctor**
+- Explain what is wrong in your rubric or test assertions and how to fix it.
 
-### 1) Requirements
+## How to use Claude Code with OpenClaw (step-by-step)
 
-- Node.js 18+ (recommended latest LTS)
-- npm
-- Windows PowerShell (for setup/tutorial parity with app docs)
+1. Open **PowerShell (normal window)** and go to project folder:
 
-### 2) Clone the repository
-
-```bash
-git clone https://github.com/DaCameraGirl/OpenClaw-Academy.git
-cd OpenClaw-Academy
+```powershell
+cd C:\Users\enter\OpenClaw-Academy
 ```
 
-### 3) Install dependencies
+2. Launch Claude Code from that same folder:
+
+```powershell
+claude
+```
+
+3. Paste this install request in Claude Code:
+
+```text
+I want to install OpenClaw in this workspace.
+Research current setup docs first, then install.
+Use OpenRouter for model access (not Anthropic subscription keys).
+Ask me only when you need API keys or tokens.
+After install, run a health check:
+1) model call works
+2) Telegram bot sends and receives
+3) MEMORY.md is created in workspace
+```
+
+4. Add your required keys when Claude asks:
+- OpenRouter API key
+- Telegram bot token (from @BotFather)
+- Tavily key (optional for web search)
+
+5. Verify setup is truly working:
+- Claude confirms provider/model configuration
+- Telegram bot replies to your test message
+- `MEMORY.md` exists in workspace
+
+6. Run benchmark tasks correctly:
+- Use the same initial prompt for Model A and Model B
+- Keep baseline state equivalent across models
+- Require at least one installed skill
+- Require a concrete final artifact path/output
+
+7. Extract traces safely:
+- Close tab normally (do not force-end session)
+- Use **Collect Traces & Continue**
+- Download model outputs + trajectories and package cleanly
+
+## Main modules
+
+- Interactive install runbook (PowerShell admin + non-admin step-by-step)
+- Full Guidelines (atomic rules, strict ordering)
+- Prompt Builder (with guideline audit)
+- Rubric Builder (with guideline audit)
+- Workflow trainer, quiz mode, safety annotation tools
+
+## Local development
 
 ```bash
 npm install
-```
-
-### 4) Start dev server
-
-```bash
 npm run dev
 ```
 
-### 5) Build production bundle
+## Build
 
 ```bash
 npm run build
 ```
 
-## OpenClaw Setup Notes (In-App)
+## Live site
 
-For full details, use the `Setup: Claude Code` page in the app. It includes:
-
-- how to open PowerShell as Admin vs non-Admin
-- where to run each command
-- exact copy/paste command blocks
-- expected outputs after each step
-- what to do when each step fails
-
-## Project Structure (High Level)
-
-```text
-src/
-  components/
-    SetupClaudeCode.jsx
-    Guidelines.jsx
-    PromptBuilder.jsx
-    RubricBuilder.jsx
-    RubricDoctor.jsx
-    UnitTestDoctor.jsx
-    QuizMode.jsx
-    Workflow.jsx
-    SafetyAnnotation.jsx
-  data/
-    atomicRules.js
-```
-
-## Live Site
-
-- URL: `https://dacameragirl.github.io/OpenClaw-Academy/`
+- `https://dacameragirl.github.io/OpenClaw-Academy/`
 - Deploy workflow: `.github/workflows/deploy.yml`
 
-## Mascot Row (because yes)
+---
 
-<p align="left">
-  <img alt="Lobster" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Lobster" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Lobster" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Claude bot" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
-  <img alt="Lobster" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Lobster" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Claude bot" width="40" height="40" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Quicksand&weight=700&size=22&pause=700&color=7CFFCB&center=true&vCenter=true&width=780&lines=💫+Twinkle+twinkle+little+prompt...;Now+your+rubrics+won't+fumble+onboarding+💫" alt="Twinkle footer" />
 </p>
