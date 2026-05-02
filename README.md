@@ -1,3 +1,37 @@
+<!-- 🌈 FULL-WIDTH PINK → BLUE GRADIENT HEADER -->
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="90" bgcolor="#ff9fd6"></td>
+    <td height="90" bgcolor="#ffb3e6"></td>
+    <td height="90" bgcolor="#ffc8f2"></td>
+    <td height="90" bgcolor="#e0c8ff"></td>
+    <td height="90" bgcolor="#b8a6ff"></td>
+    <td height="90" bgcolor="#8f84ff"></td>
+  </tr>
+</table>
+
+<div align="center">
+  <h1 style="margin-top: -40px; color: #ffffff; text-shadow: 0 0 8px #ff9fd6;">
+    💖 OpenClaw Academy — Angela Edition 💖
+  </h1>
+  <p style="color: #ffffff; font-size: 18px; margin-top: -10px;">
+    Pink x Blue Jelly Gradient Vibes
+  </p>
+</div>
+
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="20" bgcolor="#8f84ff"></td>
+    <td height="20" bgcolor="#b8a6ff"></td>
+    <td height="20" bgcolor="#e0c8ff"></td>
+    <td height="20" bgcolor="#ffc8f2"></td>
+    <td height="20" bgcolor="#ffb3e6"></td>
+    <td height="20" bgcolor="#ff9fd6"></td>
+  </tr>
+</table>
+
+
+
 <div align="center">
 
 ｡･:*:･ﾟ★,｡･:*:･ﾟ☆  🎀  O P E N C L A W   A C A D E M Y  🎀  ☆ﾟ･:*:･｡,★ﾟ･:*:･｡✧･ﾟ: *✧･ﾟ:* 　
