@@ -2,6 +2,16 @@
 
 ｡･:*:･ﾟ★,｡･:*:･ﾟ☆  🎀  O P E N C L A W   A C A D E M Y  🎀  ☆ﾟ･:*:･｡,★ﾟ･:*:･｡✧･ﾟ: *✧･ﾟ:* 　
 
+<table width="100%">
+  <tr>
+    <td height="40" bgcolor="#ff9fd6"></td>
+    <td height="40" bgcolor="#ffb3e6"></td>
+    <td height="40" bgcolor="#ffc8f2"></td>
+    <td height="40" bgcolor="#e0c8ff"></td>
+    <td height="40" bgcolor="#b8a6ff"></td>
+    <td height="40" bgcolor="#8f84ff"></td>
+  </tr>
+</table>
 
 
 <br/>
