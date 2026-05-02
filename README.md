@@ -1,4 +1,4 @@
-# 🤖✨🔥  C L A U D E   C O D E   +   O P E N C L A W   A C A D E M Y  🦞💻💥
+# 🤖🔥  C L A U D E   C O D E   +   O P E N C L A W   A C A D E M Y  🦞💻
 
 > *"Where AI writes code, claws write destiny."*  
 > — _Verse 6:19 of the Guideline Gospel_, circa 2025 📜⚡
