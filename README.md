@@ -9,7 +9,6 @@
 🌀 This is a **sentient onboarding ritual.**  
 🪄 Enter wisely.
 
-![OpenClaw Academy Banner](https://via.placeholder.com/900x200/1e1e3f/ffffff?text=OpenClaw+Academy+%E2%9A%A1+Neural+Lair+Activated)  
 *Neural Sync: 97.3% Online | Integrity: ✅ | Blinking Mode: ON*
 
 </div>
