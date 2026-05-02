@@ -10,11 +10,13 @@ import Examples from './components/Examples.jsx'
 import Workflow from './components/Workflow.jsx'
 import RubricRules from './components/RubricRules.jsx'
 import UnitTestRules from './components/UnitTestRules.jsx'
+import SetupClaudeCode from './components/SetupClaudeCode.jsx'
 
 const PAGES = {
   home: Home,
   guidelines: Guidelines,
   workflow: Workflow,
+  setup: SetupClaudeCode,
   rubric_rules: RubricRules,
   unit_test_rules: UnitTestRules,
   safety: SafetyAnnotation,

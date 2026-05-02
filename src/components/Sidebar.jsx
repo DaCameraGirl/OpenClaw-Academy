@@ -1,19 +1,20 @@
 import { useState } from 'react'
 
 const NAV = [
-  { id: 'home', icon: '🏠', label: 'Home' },
+  { id: 'home', icon: 'Home', label: 'Home' },
   { divider: 'Study' },
-  { id: 'guidelines', icon: '📘', label: 'Full Guidelines' },
-  { id: 'workflow', icon: '🧭', label: 'Workflow & Trajectories' },
-  { id: 'rubric_rules', icon: '⚖️', label: 'Rubric Rules' },
-  { id: 'unit_test_rules', icon: '✅', label: 'Unit Test Rules' },
-  { id: 'safety', icon: '🛡️', label: 'Safety Annotation' },
-  { id: 'examples', icon: '📂', label: 'Examples Library' },
+  { id: 'setup', icon: 'Setup', label: 'Setup: Claude Code' },
+  { id: 'guidelines', icon: 'Guide', label: 'Full Guidelines' },
+  { id: 'workflow', icon: 'Flow', label: 'Workflow & Trajectories' },
+  { id: 'rubric_rules', icon: 'Rules', label: 'Rubric Rules' },
+  { id: 'unit_test_rules', icon: 'Tests', label: 'Unit Test Rules' },
+  { id: 'safety', icon: 'Safe', label: 'Safety Annotation' },
+  { id: 'examples', icon: 'Examples', label: 'Examples Library' },
   { divider: 'Practice' },
-  { id: 'quiz', icon: '🎯', label: 'Quiz Mode' },
+  { id: 'quiz', icon: 'Quiz', label: 'Quiz Mode' },
   { divider: 'Tools' },
-  { id: 'rubric_doctor', icon: '🧪', label: 'Rubric Doctor' },
-  { id: 'unit_test_doctor', icon: '🔬', label: 'Unit Test Doctor' },
+  { id: 'rubric_doctor', icon: 'Doctor', label: 'Rubric Doctor' },
+  { id: 'unit_test_doctor', icon: 'Doctor', label: 'Unit Test Doctor' },
 ]
 
 export default function Sidebar({ current, onNavigate, mobileOpen, onMobileClose }) {

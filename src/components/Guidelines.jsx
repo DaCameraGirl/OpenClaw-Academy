@@ -1,6 +1,29 @@
 import { useState, useMemo } from 'react'
 import { SECTIONS } from '../data/guidelines.js'
 
+function parseRuleNum(value) {
+  const match = String(value).match(/\d+(?:\.\d+)*/)
+  if (!match) return [9999]
+  return match[0].split('.').map(n => Number.parseInt(n, 10))
+}
+
+function compareRuleNums(a, b) {
+  const pa = parseRuleNum(a)
+  const pb = parseRuleNum(b)
+  const max = Math.max(pa.length, pb.length)
+  for (let i = 0; i < max; i += 1) {
+    const va = pa[i] ?? -1
+    const vb = pb[i] ?? -1
+    if (va !== vb) return va - vb
+  }
+  return String(a).localeCompare(String(b))
+}
+
+function minRuleNum(section) {
+  const nums = section.groups.flatMap(g => g.rules.map(r => r.num))
+  return nums.sort(compareRuleNums)[0] ?? '9999'
+}
+
 function RuleItem({ rule }) {
   return (
     <div className="flex gap-3 py-2 border-b border-slate-800/60 last:border-0">
@@ -68,17 +91,31 @@ function SectionCard({ section, forceOpen }) {
 export default function Guidelines() {
   const [search, setSearch] = useState('')
   const [expandAll, setExpandAll] = useState(false)
+  const [strictOrder, setStrictOrder] = useState(true)
+
+  const normalizedSections = useMemo(() => {
+    const mapped = SECTIONS.map(section => ({
+      ...section,
+      groups: section.groups.map(group => ({
+        ...group,
+        rules: [...group.rules].sort((a, b) => compareRuleNums(a.num, b.num)),
+      })),
+    }))
+
+    if (!strictOrder) return mapped
+    return [...mapped].sort((a, b) => compareRuleNums(minRuleNum(a), minRuleNum(b)))
+  }, [strictOrder])
 
   const filtered = useMemo(() => {
-    if (!search.trim()) return SECTIONS
+    if (!search.trim()) return normalizedSections
     const q = search.toLowerCase()
-    return SECTIONS.filter(s =>
+    return normalizedSections.filter(s =>
       s.title.toLowerCase().includes(q) ||
       s.groups.some(g =>
         g.rules.some(r => r.text.toLowerCase().includes(q) || r.num.includes(q))
       )
     )
-  }, [search])
+  }, [normalizedSections, search])
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-5">
@@ -100,6 +137,12 @@ export default function Guidelines() {
           className="px-4 py-2.5 rounded-xl border border-slate-700 text-sm text-slate-400 hover:text-slate-200 hover:border-slate-500 transition shrink-0"
         >
           {expandAll ? 'Collapse all' : 'Expand all'}
+        </button>
+        <button
+          onClick={() => setStrictOrder(v => !v)}
+          className="px-4 py-2.5 rounded-xl border border-slate-700 text-sm text-slate-400 hover:text-slate-200 hover:border-slate-500 transition shrink-0"
+        >
+          {strictOrder ? 'Strict numeric: ON' : 'Strict numeric: OFF'}
         </button>
       </div>
 
