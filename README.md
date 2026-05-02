@@ -76,8 +76,8 @@ src/
     QuizMode.jsx
     Workflow.jsx
     SafetyAnnotation.jsx
-  data/
     atomicRules.js
+
 🌍 Live Site
 https://dacameragirl.github.io/OpenClaw-Academy
 Deploy workflow: .github/workflows/deploy.yml
