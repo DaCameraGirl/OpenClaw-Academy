@@ -118,3 +118,72 @@ src/
     SafetyAnnotation.jsx     # Safety labeling practice
   data/
     atomicRules.js           # Encoded atomic rules 1–113
+
+💖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━💙
+
+🚀 Getting Started (Local Dev)
+1️⃣ Requirements
+🧊 Node.js 18+
+
+📦 npm
+
+🪟 Windows PowerShell (for the OpenClaw setup runbook content)
+
+2️⃣ Clone the Repo
+bash
+git clone https://github.com/DaCameraGirl/OpenClaw-Academy.git
+cd OpenClaw-Academy
+3️⃣ Install Dependencies
+bash
+npm install
+4️⃣ Run Dev Server
+bash
+npm run dev
+Then open the printed URL in your browser (usually http://localhost:5173 or similar).
+
+5️⃣ Build for Production
+bash
+npm run build
+Output is ready for static hosting (GitHub Pages, etc.).
+
+💖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━💙
+
+🌐 Live Deployment
+The app is deployed via GitHub Pages:
+
+👉 Live site:  
+https://dacameragirl.github.io/OpenClaw-Academy
+
+Deployment is handled by:
+
+text
+.github/workflows/deploy.yml
+💖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━💙
+
+🤝 Contributing (Gradient Edition)
+Wanna add a new module, tweak a rubric flow, or improve the UI?
+
+🍭 Fork the repo
+
+🌊 Create a feature branch
+
+💅 Keep changes small and focused
+
+🧪 Run npm run build before opening a PR
+
+📸 Add screenshots for UI changes (extra points for pink/blue themes)
+
+Be kind, be clear, and keep it cute.
+
+💖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━💙
+
+🐾 Mascot Row
+Because yes.
+
+🐱 🐾 🐰 🌸 🐾 🐱
+
+💖━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━💙
+
+<div align="center">
+
+Made with 💖 + 🌈 by Angela
