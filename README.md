@@ -1,107 +1,215 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=190&text=OpenClaw%20Academy&fontAlign=50&fontAlignY=34&color=0:00c6ff,30:0072ff,70:ff5f6d,100:ffc371&fontColor=ffffff&fontSize=56&desc=Claude%20Code%20%2B%20OpenClaw%20Training%20Hub&descAlign=50&descAlignY=60" alt="OpenClaw Academy banner" />
-</p>
+<!-- ANGELA JELAPY THEME: PINK x BLUE GRADIENT VIBES -->
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Quicksand&weight=700&size=28&pause=700&color=F9D423&center=true&vCenter=true&width=980&lines=✨+Claude+Code+%2B+OpenClaw+Setup+First+✨;🛠️+Install+it+right+the+first+time;🧠+Build+strong+prompts+and+rubrics;🌟+Twinkle+mode+enabled+🌟" alt="Animated twinkle title" />
-</p>
+<div align="center">
 
-<p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-97.8%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/CSS-2.0%25-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
-  <img src="https://img.shields.io/badge/HTML-0.2%25-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML" />
-</p>
+# OpenClaw Academy
+### *Cute UI, serious agent work.*
 
-<p align="center">
-  <img alt="Claude bot" width="58" height="58" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
-  <img alt="Lobster" width="58" height="58" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Lobster" width="58" height="58" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Claude bot" width="58" height="58" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
-  <img alt="Lobster" width="58" height="58" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f99e.png" />
-  <img alt="Claude bot" width="58" height="58" src="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f916.png" />
-</p>
+<br/>
+
+<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="Gradient bar 1" />
+<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="AI Agent Trainer" />
+<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="Gradient vibes" />
+
+<br/><br/>
+
+*A pastel-gradient playground for learning how to design prompts, rubrics, and trajectories for OpenClaw - without the boring UI.*
+
+</div>
 
 ---
 
-## 🤖 Claude Code + OpenClaw (Start Here)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-This project is primarily about using **Claude Code to install, run, and evaluate OpenClaw workflows**.
+## What Is OpenClaw Academy?
 
-### ✅ Quick setup steps
+**OpenClaw Academy** is an interactive training app for:
 
-1. Open PowerShell and go to the repo:
-```powershell
-cd C:\Users\enter\OpenClaw-Academy
+- Designing **realistic OpenClaw tasks**
+- Building **valid, atomic rubrics**
+- Practicing **safe trajectory evaluation**
+- Exploring the **full 1-113 atomic rules** in a friendly UI
+
+Think: *"agent-ops bootcamp"* but dipped in **pink and blue jelly gradient**.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Core Features
+
+### Full Guidelines Explorer
+
+- All **113 atomic rules**, strict numeric order
+- Search by **rule number, topic, or keyword**
+- Expand/collapse sections for focused reading
+- Perfect for "wait, what does 78.1 say again?" moments
+
+---
+
+### Interactive Setup Runbook
+
+- Step-by-step **Claude Code / OpenClaw** setup
+- Admin vs non-admin PowerShell flows
+- ✅ Verification checkpoints after each step
+- Recovery guidance when something explodes
+- OpenRouter + Telegram integration notes
+- ♻️ A/B parity + MEMORY usage policy baked in
+
+---
+
+### Prompt Builder
+
+- Field-driven prompt creation
+- Enforces **parity**, **MEMORY**, **skill usage**, **outcome constraints**
+- ✅ Live validation so you do not ship cursed prompts
+- One-click copy of the final prompt text
+
+---
+
+### Rubric Builder
+
+- ⚖️ Only valid weights: `-5, -3, -1, +1, +3, +5`
+- Atomicity checks (one thing per criterion)
+- Self-contained criteria (no external context needed)
+- Positive phrasing enforcement
+- Negative-weight requirement (safety / critical failures)
+- JSON export for OpenClaw use
+
+---
+
+### Rubric Doctor & Unit Test Doctor
+
+- Lints rubrics for structure and phrasing
+- Flags overfitting unit tests
+- Helps separate "unit test vs rubric" logic
+- Encourages robust, non-brittle checks
+
+---
+
+### Training & Practice Modules
+
+- Workflow trainer
+- Quiz mode
+- 🛡️ Safety annotation practice
+- Realistic examples to dissect and improve
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Tech Stack
+
+- ⚛️ **React** (Vite SPA)
+- Component-driven UI for each training module
+- Static deployment via GitHub Pages
+- Data-driven rendering of atomic rules and rubrics
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Project Structure (High Level)
+
+```bash
+src/
+  components/
+    SetupClaudeCode.jsx      # Install runbook UI
+    Guidelines.jsx           # Full atomic rules explorer
+    PromptBuilder.jsx        # Prompt creation flow
+    RubricBuilder.jsx        # Rubric editor
+    RubricDoctor.jsx         # Rubric linting
+    UnitTestDoctor.jsx       # Unit test linting
+    QuizMode.jsx             # Quiz / training mode
+    Workflow.jsx             # Workflow trainer
+    SafetyAnnotation.jsx     # Safety labeling practice
+  data/
+    atomicRules.js           # Encoded atomic rules 1-113
 ```
 
-2. Launch Claude Code:
-```powershell
-claude
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Getting Started (Local Dev)
+
+### 1️⃣ Requirements
+
+- **Node.js 18+**
+- **npm**
+- **Windows PowerShell** (for the OpenClaw setup runbook content)
+
+---
+
+### 2️⃣ Clone the Repo
+
+```bash
+git clone https://github.com/DaCameraGirl/OpenClaw-Academy.git
+cd OpenClaw-Academy
 ```
 
-3. Paste this into Claude:
-```text
-I want to install OpenClaw in this workspace.
-Research current setup docs first, then install.
-Use OpenRouter for model access (not Anthropic subscription keys).
-Ask only when you need API keys/tokens.
-After install, run health checks:
-1) model call works
-2) Telegram bot sends and receives
-3) MEMORY.md is created in workspace
-```
-
-4. Provide keys when prompted:
-- 🔑 OpenRouter API key
-- 💬 Telegram bot token (@BotFather)
-- 🌐 Tavily key (optional)
-
-5. Validate:
-- ✅ model request succeeds
-- ✅ bot replies in Telegram
-- ✅ `MEMORY.md` exists
-
 ---
 
-## ✨ What this app helps with
-
-- 🧭 **Interactive install runbook** (admin + non-admin PowerShell guidance)
-- 📚 **Full guideline explorer** (atomic rules, strict ordering)
-- 🧠 **Prompt Builder** (creates stronger OpenClaw task prompts)
-- 📏 **Rubric Builder** (checks rubric validity before submission)
-- 🩺 **Rubric Doctor + Unit Test Doctor**
-- 🎯 **Quiz, workflow trainer, safety annotation tools**
-
----
-
-## 🧠 Plain-English meanings
-
-- **Prompt Builder**: helps write a full task prompt with parity, MEMORY, skills, and clear outcome.
-- **Rubric Builder**: helps write scoring rules that pass weight, phrasing, and structure constraints.
-- **Rubric Doctor / Unit Test Doctor**: spots mistakes and tells you how to fix them.
-
----
-
-## 🧪 Local dev
+### 3️⃣ Install Dependencies
 
 ```bash
 npm install
+```
+
+---
+
+### 4️⃣ Run Dev Server
+
+```bash
 npm run dev
 ```
 
-## 🏗️ Build
+Then open the printed URL in your browser (usually `http://localhost:5173`).
+
+---
+
+### 5️⃣ Build for Production
 
 ```bash
 npm run build
 ```
 
-## 🚀 Live site
+Output is ready for static hosting (GitHub Pages, etc.).
 
-- `https://dacameragirl.github.io/OpenClaw-Academy/`
-- Deploy workflow: `.github/workflows/deploy.yml`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
----
+## Live Deployment
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Quicksand&weight=700&size=22&pause=700&color=7CFFCB&center=true&vCenter=true&width=820&lines=💫+Twinkle+twinkle+little+prompt...;Now+your+rubrics+won't+fumble+onboarding+💫" alt="Twinkle footer" />
-</p>
+The app is deployed via **GitHub Pages**:
+
+🔗 **Live site:**  
+`https://dacameragirl.github.io/OpenClaw-Academy`
+
+Deployment is handled by:
+
+```text
+.github/workflows/deploy.yml
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Contributing (Gradient Edition)
+
+Wanna add a new module, tweak a rubric flow, or improve the UI?
+
+- Fork the repo
+- Create a feature branch
+- Keep changes small and focused
+- Run `npm run build` before opening a PR
+- Add screenshots for UI changes (extra points for pink/blue themes)
+
+Be kind, be clear, and keep it cute.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Mascot Row
+
+Because yes.
+
+> 🤖 🦞 ✨ 🦞 🤖
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<div align="center">
+
+### Made with 🦞 + 🤖 by Angela  
+*Pastel gradient, serious agent energy.*
+
+</div>
