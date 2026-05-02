@@ -11,12 +11,16 @@ import Workflow from './components/Workflow.jsx'
 import RubricRules from './components/RubricRules.jsx'
 import UnitTestRules from './components/UnitTestRules.jsx'
 import SetupClaudeCode from './components/SetupClaudeCode.jsx'
+import PromptBuilder from './components/PromptBuilder.jsx'
+import RubricBuilder from './components/RubricBuilder.jsx'
 
 const PAGES = {
   home: Home,
   guidelines: Guidelines,
   workflow: Workflow,
   setup: SetupClaudeCode,
+  prompt_builder: PromptBuilder,
+  rubric_builder: RubricBuilder,
   rubric_rules: RubricRules,
   unit_test_rules: UnitTestRules,
   safety: SafetyAnnotation,
@@ -27,7 +31,7 @@ const PAGES = {
 }
 
 function App() {
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState('setup')
   const [mobileOpen, setMobileOpen] = useState(false)
   const Page = PAGES[page] || Home
 

@@ -73,6 +73,8 @@ Task requirements:
 
 export default function SetupClaudeCode() {
   const [activeFlow, setActiveFlow] = useState('claude')
+  const [stepIndex, setStepIndex] = useState(0)
+  const currentStep = STEPS[stepIndex]
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-5">
@@ -85,6 +87,39 @@ export default function SetupClaudeCode() {
 
       <div className="rounded-2xl border border-cyan-900/40 bg-cyan-950/20 p-4 text-sm text-cyan-100">
         Key fix: keep reference files inside the active workspace and reference them with relative paths.
+      </div>
+
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-sm font-semibold text-slate-200">Interactive Install Tutorial</h2>
+          <div className="flex items-center gap-2 text-xs">
+            <span className="animate-pulse rounded-full border border-cyan-700 bg-cyan-900/40 px-2 py-1 text-cyan-200">Claude blinking</span>
+            <span className="animate-pulse rounded-full border border-orange-700 bg-orange-900/40 px-2 py-1 text-orange-200">Lobster blinking</span>
+          </div>
+        </div>
+        <div className="mt-3 rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+          <div className="text-xs text-slate-500">Step {stepIndex + 1} of {STEPS.length}</div>
+          <div className="text-sm font-medium text-slate-200 mt-1">{currentStep.title}</div>
+          <ul className="mt-2 space-y-1.5">
+            {currentStep.points.map((point) => (
+              <li key={point} className="text-sm text-slate-300 leading-relaxed">{point}</li>
+            ))}
+          </ul>
+          <div className="mt-3 flex gap-2">
+            <button
+              onClick={() => setStepIndex((s) => Math.max(0, s - 1))}
+              className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 text-slate-300"
+            >
+              Back
+            </button>
+            <button
+              onClick={() => setStepIndex((s) => Math.min(STEPS.length - 1, s + 1))}
+              className="px-3 py-1.5 text-xs rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950"
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">

@@ -1,16 +1,41 @@
-# React + Vite
+# OpenClaw Academy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![JavaScript 97.8%](https://img.shields.io/badge/JavaScript-97.8%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827)
+![CSS 2.0%](https://img.shields.io/badge/CSS-2.0%25-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![HTML 0.2%](https://img.shields.io/badge/HTML-0.2%25-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
-Currently, two official plugins are available:
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=26&pause=900&color=22D3EE&center=true&vCenter=true&width=900&lines=OpenClaw+Academy;Claude+%2B+Lobster+Mode+Activated;Build+better+tasks%2C+rubrics%2C+and+trajectories" alt="Animated title" />
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <img alt="Claude and Lobster" src="https://img.shields.io/badge/Claude-%F0%9F%A4%96-ready-0EA5E9?style=for-the-badge" />
+  <img alt="Lobster" src="https://img.shields.io/badge/Lobster-%F0%9F%A6%9E-blinking-F97316?style=for-the-badge" />
+</p>
 
-## React Compiler
+Interactive training site for OpenClaw workflows:
+- full guidelines navigator
+- workflow and trajectory trainer
+- rubric doctor and unit test doctor
+- safety annotation study tools
+- quiz mode
+- setup path for Claude Code and Lobster flows
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Local dev
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Build
+
+```bash
+npm run build
+```
+
+## Live site
+
+GitHub Pages deploys from `main` via Actions:
+- workflow: `.github/workflows/deploy.yml`
+- URL: `https://dacameragirl.github.io/OpenClaw-Academy/`

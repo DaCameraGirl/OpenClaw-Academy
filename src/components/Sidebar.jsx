@@ -6,6 +6,8 @@ const NAV = [
   { id: 'setup', icon: 'Setup', label: 'Setup: Claude Code' },
   { id: 'guidelines', icon: 'Guide', label: 'Full Guidelines' },
   { id: 'workflow', icon: 'Flow', label: 'Workflow & Trajectories' },
+  { id: 'prompt_builder', icon: 'Build', label: 'Prompt Builder' },
+  { id: 'rubric_builder', icon: 'Build', label: 'Rubric Builder' },
   { id: 'rubric_rules', icon: 'Rules', label: 'Rubric Rules' },
   { id: 'unit_test_rules', icon: 'Tests', label: 'Unit Test Rules' },
   { id: 'safety', icon: 'Safe', label: 'Safety Annotation' },
