@@ -1,158 +1,91 @@
-<!-- ANGELA JELAPY THEME: PINK x BLUE GRADIENT VIBES -->
+# Claude Code + OpenClaw Academy
 
-<div align="center">
+## Start Here: Claude Code + OpenClaw Setup
 
-# OpenClaw Academy
+This project is for running OpenClaw workflows with Claude Code, building prompts/rubrics, and evaluating trajectories correctly.
 
-<br/>
+### 1) Open repo in PowerShell
 
-<!-- Faux gradient bar -->
-<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
-<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
-<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
+```powershell
+cd C:\Users\enter\OpenClaw-Academy
+```
 
-<br/><br/>
+### 2) Launch Claude Code
 
-*A pastel-gradient playground for learning how to design prompts, rubrics, and trajectories for OpenClaw-without the boring UI.*
+```powershell
+claude
+```
 
-</div>
+### 3) Paste this install request
 
----
+```text
+I want to install OpenClaw in this workspace.
+Research current setup docs first, then install.
+Use OpenRouter for model access (not Anthropic subscription keys).
+Ask only when you need API keys/tokens.
+After install, run health checks:
+1) model call works
+2) Telegram bot sends and receives
+3) MEMORY.md is created in workspace
+```
 
-??????????????????????????????????????????????????????????????????
+### 4) Provide keys when prompted
 
-## What Is OpenClaw Academy?
+- OpenRouter API key
+- Telegram bot token (@BotFather)
+- Tavily key (optional)
 
-**OpenClaw Academy** is an interactive training app for:
+### 5) Validate setup
 
-- Designing **realistic OpenClaw tasks**
-- Building **valid, atomic rubrics**
-- Practicing **safe trajectory evaluation**
-- Exploring the **full 1-113 atomic rules** in a friendly UI
-
-Think: *"agent-ops bootcamp"* but dipped in **pink and blue jelly gradient**.
-
-<br/>
-
-<!-- Faux gradient bar -->
-<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
-<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
-<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
-
-<br/><br/>
-
-??????????????????????????????????????????????????????????????????
-
-## Core Features
-
-### Full Guidelines Explorer
-
-- All **113 atomic rules**, strict numeric order
-- Search by **rule number, topic, or keyword**
-- Expand/collapse sections for focused reading
-- Perfect for "wait, what does 78.1 say again?" moments
+- model request succeeds
+- bot replies in Telegram
+- `MEMORY.md` exists in workspace
 
 ---
 
-### Interactive Setup Runbook
+## What This App Includes
 
-- Step-by-step **Claude Code / OpenClaw** setup
-- Admin vs non-admin PowerShell flows
-- ? Verification checkpoints after each step
-- Recovery guidance when something explodes
-- OpenRouter + Telegram integration notes
-- ?? A/B parity + MEMORY usage policy baked in
-
-<br/>
-
-<!-- Faux gradient bar -->
-<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
-<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
-<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
-
-<br/><br/>
+- Full Guidelines Explorer (rules 1-113, strict numeric order)
+- Interactive Setup Runbook (admin/non-admin PowerShell paths)
+- Prompt Builder (parity, MEMORY, skill-use, outcome checks)
+- Rubric Builder (valid weights, atomicity, structure checks)
+- Rubric Doctor + Unit Test Doctor
+- Workflow trainer, quiz mode, safety annotation practice
 
 ---
 
-### Prompt Builder
-
-- Field-driven prompt creation
-- Enforces **parity**, **MEMORY**, **Skill usage**, **Outcome constraints**
-- ? Live validation so you don't ship cursed prompts
-- One-click copy of the final prompt text
-
----
-
-### Rubric Builder
-
-- ?? Only valid weights: `-5, -3, -1, +1, +3, +5`
-- Atomicity checks (one thing per criterion)
-- Self-contained criteria (no external context needed)
-- Positive phrasing enforcement
-- Negative-weight requirement (safety / critical failures)
-- JSON export for OpenClaw use
-
----
-
-### Rubric Doctor & Unit Test Doctor
-
-- Lints rubrics for structure and phrasing
-- Flags overfitting unit tests
-- Helps separate "unit test vs rubric" logic
-- Encourages robust, non-brittle checks
-
-<br/>
-
-<!-- Faux gradient bar -->
-<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
-<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
-<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
-
-<br/><br/>
-
----
-
-### Training & Practice Modules
-
-- Workflow trainer
-- Quiz mode
-- Safety annotation practice
-- Realistic examples to dissect and improve
-
-??????????????????????????????????????????????????????????????????
-
-## Tech Stack
-
-- ?? **React** (Vite SPA)
-- **Component-driven UI** for each training module
-- **Static deployment** via GitHub Pages
-- Data-driven rendering of atomic rules & rubrics
-
-??????????????????????????????????????????????????????????????????
-
-<br/>
-
-<!-- Faux gradient bar -->
-<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
-<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
-<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
-
-<br/><br/>
-
-## Project Structure (High Level)
+## Local Dev
 
 ```bash
+npm install
+npm run dev
+```
+
+## Production Build
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```text
 src/
   components/
-    SetupClaudeCode.jsx      # Install runbook UI
-    Guidelines.jsx           # Full atomic rules explorer
-    PromptBuilder.jsx        # Prompt creation flow
-    RubricBuilder.jsx        # Rubric editor
-    RubricDoctor.jsx         # Rubric linting
-    UnitTestDoctor.jsx       # Unit test linting
-    QuizMode.jsx             # Quiz / training mode
-    Workflow.jsx             # Workflow trainer
-    SafetyAnnotation.jsx     # Safety labeling practice
+    SetupClaudeCode.jsx
+    Guidelines.jsx
+    PromptBuilder.jsx
+    RubricBuilder.jsx
+    RubricDoctor.jsx
+    UnitTestDoctor.jsx
+    QuizMode.jsx
+    Workflow.jsx
+    SafetyAnnotation.jsx
   data/
-    atomicRules.js           # Encoded atomic rules 1-113
+    atomicRules.js
 ```
+
+## Live Site
+
+- https://dacameragirl.github.io/OpenClaw-Academy
+- Deploy workflow: `.github/workflows/deploy.yml`
