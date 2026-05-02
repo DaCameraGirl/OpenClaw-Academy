@@ -1,187 +1,158 @@
-# OpenClaw Academy
-**Cute UI, serious agent work.**
+<!-- ANGELA JELAPY THEME: PINK x BLUE GRADIENT VIBES -->
 
 <div align="center">
 
-🤖 🦞 ✨ 🦞 🤖
+# OpenClaw Academy
+
+<br/>
+
+<!-- Faux gradient bar -->
+<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
+<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
+<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
+
+<br/><br/>
+
+*A pastel-gradient playground for learning how to design prompts, rubrics, and trajectories for OpenClaw-without the boring UI.*
 
 </div>
 
 ---
 
+??????????????????????????????????????????????????????????????????
+
 ## What Is OpenClaw Academy?
 
-OpenClaw Academy is an interactive training app for:
+**OpenClaw Academy** is an interactive training app for:
 
-- Designing realistic OpenClaw tasks
-- Building valid, atomic rubrics
-- Practicing safe trajectory evaluation
-- Exploring the full 1-113 atomic rules in a friendly UI
+- Designing **realistic OpenClaw tasks**
+- Building **valid, atomic rubrics**
+- Practicing **safe trajectory evaluation**
+- Exploring the **full 1-113 atomic rules** in a friendly UI
 
----
+Think: *"agent-ops bootcamp"* but dipped in **pink and blue jelly gradient**.
+
+<br/>
+
+<!-- Faux gradient bar -->
+<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
+<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
+<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
+
+<br/><br/>
+
+??????????????????????????????????????????????????????????????????
 
 ## Core Features
 
 ### Full Guidelines Explorer
-- All 113 atomic rules, strict numeric order
-- Search by rule number, topic, or keyword
-- Expand/collapse sections for focus mode
+
+- All **113 atomic rules**, strict numeric order
+- Search by **rule number, topic, or keyword**
+- Expand/collapse sections for focused reading
+- Perfect for "wait, what does 78.1 say again?" moments
+
+---
 
 ### Interactive Setup Runbook
-- Step-by-step Claude Code / OpenClaw setup
+
+- Step-by-step **Claude Code / OpenClaw** setup
 - Admin vs non-admin PowerShell flows
-- Verification checkpoints after each step
-- Recovery guidance when steps fail
+- ? Verification checkpoints after each step
+- Recovery guidance when something explodes
 - OpenRouter + Telegram integration notes
-- A/B parity + MEMORY usage policy
+- ?? A/B parity + MEMORY usage policy baked in
+
+<br/>
+
+<!-- Faux gradient bar -->
+<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
+<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
+<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
+
+<br/><br/>
+
+---
 
 ### Prompt Builder
+
 - Field-driven prompt creation
-- Enforces parity, MEMORY, skill usage, and outcome constraints
-- Live validation
-- One-click copy of final prompt text
+- Enforces **parity**, **MEMORY**, **Skill usage**, **Outcome constraints**
+- ? Live validation so you don't ship cursed prompts
+- One-click copy of the final prompt text
+
+---
 
 ### Rubric Builder
-- Valid weights only: `-5, -3, -1, +1, +3, +5`
-- Atomicity checks
-- Self-contained criteria checks
-- Positive phrasing checks
-- Negative-weight requirement enforcement
-- JSON export
 
-### Rubric Doctor + Unit Test Doctor
+- ?? Only valid weights: `-5, -3, -1, +1, +3, +5`
+- Atomicity checks (one thing per criterion)
+- Self-contained criteria (no external context needed)
+- Positive phrasing enforcement
+- Negative-weight requirement (safety / critical failures)
+- JSON export for OpenClaw use
+
+---
+
+### Rubric Doctor & Unit Test Doctor
+
 - Lints rubrics for structure and phrasing
 - Flags overfitting unit tests
 - Helps separate "unit test vs rubric" logic
+- Encourages robust, non-brittle checks
 
-### Training Modules
+<br/>
+
+<!-- Faux gradient bar -->
+<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
+<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
+<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
+
+<br/><br/>
+
+---
+
+### Training & Practice Modules
+
 - Workflow trainer
 - Quiz mode
 - Safety annotation practice
-- Real examples
+- Realistic examples to dissect and improve
 
----
-
-## Claude Code + OpenClaw (Start Here)
-
-1. Open PowerShell and move into the repo:
-
-```powershell
-cd C:\Users\enter\OpenClaw-Academy
-```
-
-2. Start Claude Code:
-
-```powershell
-claude
-```
-
-3. Paste this install request:
-
-```text
-I want to install OpenClaw in this workspace.
-Research current setup docs first, then install.
-Use OpenRouter for model access (not Anthropic subscription keys).
-Ask only when you need API keys/tokens.
-After install, run health checks:
-1) model call works
-2) Telegram bot sends and receives
-3) MEMORY.md is created in workspace
-```
-
-4. Provide keys when requested:
-- OpenRouter API key
-- Telegram bot token (@BotFather)
-- Tavily key (optional)
-
-5. Validate:
-- model request succeeds
-- bot replies in Telegram
-- `MEMORY.md` exists in workspace
-
----
+??????????????????????????????????????????????????????????????????
 
 ## Tech Stack
 
-- React (Vite SPA)
-- Component-driven UI modules
-- Static deploy via GitHub Pages
-- Data-driven atomic rules rendering
+- ?? **React** (Vite SPA)
+- **Component-driven UI** for each training module
+- **Static deployment** via GitHub Pages
+- Data-driven rendering of atomic rules & rubrics
 
----
+??????????????????????????????????????????????????????????????????
+
+<br/>
+
+<!-- Faux gradient bar -->
+<img src="https://img.shields.io/badge/-_-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6&logoColor=ffffff" alt="bar" />
+<img src="https://img.shields.io/badge/AI_Agent_Trainer-Online-7f5dff?style=for-the-badge&labelColor=ff9fd6&color=7f5dff" alt="agent trainer" />
+<img src="https://img.shields.io/badge/Pink_x_Blue-Gradient_Vibes-ff9fd6?style=for-the-badge&labelColor=7f5dff&color=ff9fd6" alt="vibes" />
+
+<br/><br/>
 
 ## Project Structure (High Level)
 
 ```bash
 src/
   components/
-    SetupClaudeCode.jsx
-    Guidelines.jsx
-    PromptBuilder.jsx
-    RubricBuilder.jsx
-    RubricDoctor.jsx
-    UnitTestDoctor.jsx
-    QuizMode.jsx
-    Workflow.jsx
-    SafetyAnnotation.jsx
+    SetupClaudeCode.jsx      # Install runbook UI
+    Guidelines.jsx           # Full atomic rules explorer
+    PromptBuilder.jsx        # Prompt creation flow
+    RubricBuilder.jsx        # Rubric editor
+    RubricDoctor.jsx         # Rubric linting
+    UnitTestDoctor.jsx       # Unit test linting
+    QuizMode.jsx             # Quiz / training mode
+    Workflow.jsx             # Workflow trainer
+    SafetyAnnotation.jsx     # Safety labeling practice
   data/
-    atomicRules.js
+    atomicRules.js           # Encoded atomic rules 1-113
 ```
-
----
-
-## Getting Started (Local Dev)
-
-### Requirements
-- Node.js 18+
-- npm
-- Windows PowerShell
-
-### Clone the repo
-
-```bash
-git clone https://github.com/DaCameraGirl/OpenClaw-Academy.git
-cd OpenClaw-Academy
-```
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Run dev server
-
-```bash
-npm run dev
-```
-
-### Build production bundle
-
-```bash
-npm run build
-```
-
----
-
-## Live Site
-
-`https://dacameragirl.github.io/OpenClaw-Academy`
-
-Deploy workflow:
-
-```text
-.github/workflows/deploy.yml
-```
-
----
-
-## Contributing
-
-- Fork the repo
-- Create a feature branch
-- Keep changes focused
-- Run `npm run build` before PR
-- Add screenshots for UI changes
-
-Be kind. Be clear.
