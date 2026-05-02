@@ -3,7 +3,7 @@
 <div align="center">
 
 # 💖🌈 OpenClaw Academy 🌈💖  
-### *Cute UI, serious agent work.*
+
 
 <br/>
 
@@ -14,7 +14,7 @@
 
 <br/><br/>
 
-💗🌊 *A pastel‑gradient playground for learning how to design prompts, rubrics, and trajectories for OpenClaw—without the boring UI.* 🌊💗
+💗🌊 *A playground for learning how to design prompts, rubrics, and trajectories for OpenClaw—without the boring UI.* 🌊💗
 
 </div>
 
