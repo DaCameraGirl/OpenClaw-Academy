@@ -212,18 +212,9 @@ export default function SetupClaudeCode() {
 }
 
 function Block({ title, items }) {
-  const copyText = `${title}\n${items.map((item) => `- ${item}`).join('\n')}`
   return (
     <div className="mt-3">
-      <div className="flex items-center justify-between gap-2 mb-1.5">
-        <div className="text-[11px] uppercase tracking-widest text-slate-600">{title}</div>
-        <button
-          onClick={() => navigator.clipboard.writeText(copyText)}
-          className="px-2 py-1 text-[10px] rounded-md border border-slate-700 text-slate-300 hover:border-slate-500"
-        >
-          Copy
-        </button>
-      </div>
+      <div className="text-[11px] uppercase tracking-widest text-slate-600 mb-1.5">{title}</div>
       <ul className="space-y-1.5">
         {items.map((item) => (
           <li key={item} className="text-sm text-slate-300 leading-relaxed">{item}</li>
@@ -234,18 +225,9 @@ function Block({ title, items }) {
 }
 
 function Code({ title, lines }) {
-  const copyText = lines.join('\n')
   return (
     <div className="mt-3">
-      <div className="flex items-center justify-between gap-2 mb-1.5">
-        <div className="text-[11px] uppercase tracking-widest text-slate-600">{title}</div>
-        <button
-          onClick={() => navigator.clipboard.writeText(copyText)}
-          className="px-2 py-1 text-[10px] rounded-md border border-slate-700 text-slate-300 hover:border-slate-500"
-        >
-          Copy
-        </button>
-      </div>
+      <div className="text-[11px] uppercase tracking-widest text-slate-600 mb-1.5">{title}</div>
       <pre className="rounded-xl border border-slate-800 bg-slate-950/60 p-3 text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap">
         {lines.join('\n')}
       </pre>
