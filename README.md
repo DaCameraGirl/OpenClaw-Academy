@@ -1,5 +1,3 @@
-<!-- 🌈 ANGELA JELAPY THEME: PINK x BLUE GRADIENT VIBES -->
-
 <div align="center">
 
 # 💖🌈 OpenClaw Academy 🌈💖  
