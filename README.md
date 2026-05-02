@@ -15,13 +15,13 @@
 
 ---
 
-      ## 🚀✨⚡  I N I T I A T E   D E P L O Y M E N T  ⚡✨🚀
+                         🚀✨⚡  I N I T I A T E   D E P L O Y M E N T  ⚡✨🚀
 
 > _You stand at the edge of the code void._  
 > _Claude waits. The Claw stirs._  
 > _Begin._
 
-### 🔧 Step Into the Matrix
+      🔧 Step Into the Matrix
 
 Open your terminal. Become one with the shell.
 
