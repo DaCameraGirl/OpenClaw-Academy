@@ -1,12 +1,7 @@
 <div align="center">
 
-｡･:*:･ﾟ★,｡･:*:･ﾟ☆  🎀  O P E N C L A W   A C A D E M Y  🎀  ☆ﾟ･:*:･｡,★ﾟ･:*:･｡
+｡･:*:･ﾟ★,｡･:*:･ﾟ☆  🎀  O P E N C L A W   A C A D E M Y  🎀  ☆ﾟ･:*:･｡,★ﾟ･:*:･｡✧･ﾟ: *✧･ﾟ:* 　
 
-
- ／l、
-（ﾟ､ ｡ ７   💗  H A C K E R   C A T   O N L I N E
-  l、 ~ヽ
-  じしf_, )ノ
 
 
 <br/>
