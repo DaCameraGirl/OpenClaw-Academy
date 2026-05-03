@@ -1,5 +1,22 @@
 import { useState } from 'react'
 
+function CopyButton({ text }) {
+  const [copied, setCopied] = useState(false)
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+  return (
+    <button
+      onClick={handleCopy}
+      className="px-2.5 py-1 text-[10px] rounded-lg border border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-500 transition"
+    >
+      {copied ? '✅ Copied' : 'Copy'}
+    </button>
+  )
+}
+
 const STEPS = [
   {
     title: '1) Open PowerShell correctly (Admin + Non-Admin)',
@@ -184,8 +201,24 @@ export default function SetupClaudeCode() {
         <div className="flex items-center justify-between">
           <div className="text-xs text-slate-500">Step {idx + 1} of {STEPS.length}</div>
           <div className="flex gap-2">
-            <button onClick={() => setIdx((v) => Math.max(0, v - 1))} className="px-3 py-1.5 text-xs rounded-lg border border-slate-700 text-slate-300">Back</button>
-            <button onClick={() => setIdx((v) => Math.min(STEPS.length - 1, v + 1))} className="px-3 py-1.5 text-xs rounded-lg bg-cyan-600 text-slate-950">Next</button>
+            <button
+              onClick={() => setIdx((v) => Math.max(0, v - 1))}
+              disabled={idx === 0}
+              className={`px-3 py-1.5 text-xs rounded-lg border transition ${
+                idx === 0
+                  ? 'border-slate-800 text-slate-700 cursor-not-allowed opacity-40'
+                  : 'border-slate-700 text-slate-300 hover:border-slate-500 hover:text-slate-100'
+              }`}
+            >Back</button>
+            <button
+              onClick={() => setIdx((v) => Math.min(STEPS.length - 1, v + 1))}
+              disabled={idx === STEPS.length - 1}
+              className={`px-3 py-1.5 text-xs rounded-lg transition ${
+                idx === STEPS.length - 1
+                  ? 'bg-cyan-900 text-slate-600 cursor-not-allowed opacity-40'
+                  : 'bg-cyan-600 hover:bg-cyan-500 text-slate-950'
+              }`}
+            >Next</button>
           </div>
         </div>
 
@@ -227,7 +260,10 @@ function Block({ title, items }) {
 function Code({ title, lines }) {
   return (
     <div className="mt-3">
-      <div className="text-[11px] uppercase tracking-widest text-slate-600 mb-1.5">{title}</div>
+      <div className="flex items-center justify-between mb-1.5">
+        <div className="text-[11px] uppercase tracking-widest text-slate-600">{title}</div>
+        <CopyButton text={lines.join('\n')} />
+      </div>
       <pre className="rounded-xl border border-slate-800 bg-slate-950/60 p-3 text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap">
         {lines.join('\n')}
       </pre>
