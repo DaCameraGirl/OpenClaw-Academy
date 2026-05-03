@@ -47,6 +47,15 @@ function analyzeRubric(text, weight, category) {
 }
 
 /* ── rubric generation engine ──────────────────────── */
+const STOP_WORDS = new Set(['only', 'and', 'or', 'the', 'a', 'an', 'must', 'be', 'just', 'with', 'plus'])
+
+function cleanColName(raw) {
+  return raw
+    .replace(/['"]/g, '')
+    .replace(/\b(only|and|or|must|be|just)\b/gi, '')
+    .trim()
+}
+
 function generateRubric(prompt) {
   const t = prompt.toLowerCase()
   const criteria = []
@@ -55,12 +64,19 @@ function generateRubric(prompt) {
   const fileMatches = [...prompt.matchAll(/(?:create|save|write|generate|output|produce|named?|called?)\s+[`"']?([a-zA-Z0-9_\-]+\.[a-zA-Z0-9]{2,5})[`"']?/gi)]
   const files = [...new Set(fileMatches.map(m => m[1]).filter(f => !f.startsWith('http')))]
 
+  // Main artifact — +5 (critical, defines whether task was even attempted)
   files.forEach(filename => {
     criteria.push({ text: `The agent creates a file named ${filename} in the workspace.`, weight: '+5', category: 'Task Completion' })
   })
 
-  // ── detect format ──
-  const formatMap = { csv: 'CSV', json: 'JSON', tsv: 'TSV', xlsx: 'Excel spreadsheet', md: 'Markdown', txt: 'plain text', zip: 'zip archive' }
+  // Source file read — +1 (minor supporting check)
+  const sourceMatch = prompt.match(/read\s+([a-zA-Z0-9_\-]+\.[a-zA-Z0-9]{2,5})/i)
+  if (sourceMatch) {
+    criteria.push({ text: `The agent reads ${sourceMatch[1]} as the source file for the task.`, weight: '+1', category: 'Tool Use' })
+  }
+
+  // ── detect format — +5 if explicitly specified ──
+  const formatMap = { csv: 'CSV', json: 'JSON', tsv: 'TSV', xlsx: 'Excel spreadsheet', md: 'Markdown', txt: 'plain text' }
   for (const [ext, label] of Object.entries(formatMap)) {
     if (t.includes(`.${ext}`) || t.includes(`${ext} format`) || t.includes(`as ${ext}`)) {
       criteria.push({ text: `The output file is in ${label} format.`, weight: '+5', category: 'Instruction Following' })
@@ -72,38 +88,67 @@ function generateRubric(prompt) {
   const colMatch = prompt.match(/columns?\s+(?:must\s+be|are|include|named?|called?|:)\s+([^\n.]+)/i)
   if (colMatch) {
     const raw = colMatch[1]
-    const cols = raw.split(/,|and/).map(c => c.replace(/['"]/g, '').trim()).filter(Boolean)
-    cols.slice(0, 6).forEach(col => {
-      criteria.push({ text: `The output includes a column named "${col}".`, weight: '+5', category: 'Instruction Following' })
-    })
+    // Split on comma/and, strip junk words, filter empties
+    const cols = raw
+      .split(/,|\band\b/)
+      .map(c => cleanColName(c))
+      .filter(c => c.length > 0 && !STOP_WORDS.has(c.toLowerCase()))
+
     if (cols.length > 0) {
-      criteria.push({ text: `The output includes columns other than ${cols.map(c => `"${c}"`).join(', ')}.`, weight: '-5', category: 'Negative Criterion' })
+      // All required columns present as a set — +5 (core constraint)
+      criteria.push({
+        text: `The output includes the columns ${cols.map(c => `"${c}"`).join(', ')}.`,
+        weight: '+5',
+        category: 'Instruction Following'
+      })
+      // Individual spot-checks — +3 each (important but not critical alone)
+      cols.slice(0, 5).forEach(col => {
+        criteria.push({ text: `The output includes a column named "${col}".`, weight: '+3', category: 'Instruction Following' })
+      })
+      // Exact filename match — +1 (minor, already checked above)
+      if (files.length > 0) {
+        criteria.push({ text: `The agent uses the exact output filename ${files[0]}.`, weight: '+1', category: 'Instruction Following' })
+      }
+      // Negative: extra columns present — -5 (invalidates result)
+      criteria.push({
+        text: `The output includes columns other than ${cols.map(c => `"${c}"`).join(', ')}.`,
+        weight: '-5',
+        category: 'Negative Criterion'
+      })
     }
   }
 
   // ── detect exact counts ──
-  const countMatch = prompt.match(/(?:exactly|at least|minimum of|)\s*(\d+)\s+(?:rows?|items?|records?|entries|words?|lines?|emails?|contacts?|criteria)/i)
+  const countMatch = prompt.match(/(?:exactly|at least|minimum of)?\s*(\d+)\s+(rows?|items?|records?|entries|words?|lines?|emails?|contacts?|pairs?|flashcards?)/i)
   if (countMatch) {
     const n = countMatch[1]
-    const unit = countMatch[0].split(/\s+/).pop()
+    const unit = countMatch[2]
+    // Count check — +3 (important constraint)
     criteria.push({ text: `The output contains exactly ${n} ${unit}.`, weight: '+3', category: 'Instruction Following' })
+    // Missing items — -5 (critical failure, invalidates deliverable)
     criteria.push({ text: `The output contains fewer than ${n} required ${unit}.`, weight: '-5', category: 'Negative Criterion' })
   }
 
   // ── detect filter conditions ──
-  const filterPatterns = [
-    { rx: /only\s+(active|current|valid)\s+/i, label: (m) => `The agent includes only ${m[1]} records in the output.` },
-    { rx: /exclude\s+(inactive|deleted|archived|invalid)/i, label: (m) => `The output excludes ${m[1]} records.` },
-    { rx: /no\s+(duplicates?|duplicate\s+entries)/i, label: () => 'The output contains duplicate entries.' },
-  ]
-  filterPatterns.forEach(({ rx, label }) => {
-    const m = prompt.match(rx)
-    if (m) {
-      const text = label(m)
-      const isNeg = text.toLowerCase().includes('duplicate')
-      criteria.push({ text, weight: isNeg ? '-3' : '+5', category: isNeg ? 'Negative Criterion' : 'Instruction Following' })
-    }
-  })
+  const activeMatch = prompt.match(/only\s+(active|current|valid)\s+/i)
+  if (activeMatch) {
+    // Core filter — +5 (violating this makes result wrong)
+    criteria.push({ text: `The output includes only ${activeMatch[1]} records.`, weight: '+5', category: 'Instruction Following' })
+    // Content quality — +3
+    criteria.push({ text: `The agent preserves only the essential contact information requested.`, weight: '+3', category: 'Instruction Following' })
+    // Excludes metadata — +3
+    criteria.push({ text: `The output excludes unrelated metadata fields.`, weight: '+3', category: 'Instruction Following' })
+  }
+
+  const excludeMatch = prompt.match(/exclude\s+(inactive|deleted|archived|invalid)/i)
+  if (excludeMatch) {
+    criteria.push({ text: `The output excludes ${excludeMatch[1]} records.`, weight: '+5', category: 'Instruction Following' })
+  }
+
+  const dupMatch = prompt.match(/no\s+duplicates?/i)
+  if (dupMatch) {
+    criteria.push({ text: 'The output contains duplicate entries.', weight: '-3', category: 'Negative Criterion' })
+  }
 
   // ── detect MEMORY.md ──
   if (t.includes('memory.md') || t.includes('memory file') || t.includes('store in memory') || t.includes('save to memory')) {
@@ -114,17 +159,26 @@ function generateRubric(prompt) {
   // ── detect email sending ──
   if (t.includes('send') && (t.includes('email') || t.includes('message'))) {
     criteria.push({ text: 'The agent sends the required email(s) to the specified recipient(s).', weight: '+5', category: 'Task Completion' })
-    criteria.push({ text: 'The sent email includes the required subject line.', weight: '+3', category: 'Instruction Following' })
+    // Subject line — +3 if mentioned, +1 if implied
+    const subjectMatch = prompt.match(/subject\s+(?:line\s+)?["']?([^"'\n.]+)["']?/i)
+    if (subjectMatch) {
+      criteria.push({ text: `The sent email uses the subject line "${subjectMatch[1].trim()}".`, weight: '+3', category: 'Instruction Following' })
+    } else {
+      criteria.push({ text: 'The sent email includes a subject line.', weight: '+1', category: 'Instruction Following' })
+    }
   }
 
   // ── detect tool / skill use ──
-  if (t.includes('skill') || t.includes('tool') || t.includes('api') || t.includes('calendar') || t.includes('gmail') || t.includes('search')) {
+  if (t.includes('skill') || t.includes('calendar') || t.includes('gmail') || t.includes('search') || t.includes('api')) {
     criteria.push({ text: 'The trajectory includes at least one OpenClaw Skill invocation.', weight: '+3', category: 'Tool Use' })
   }
 
-  // ── detect summary / report requirement ──
+  // ── detect summary / report ──
   if (t.includes('summary') || t.includes('report') || t.includes('analysis')) {
-    criteria.push({ text: 'The agent produces a summary or report artifact as required.', weight: '+5', category: 'Task Completion' })
+    if (files.length === 0) {
+      // No file detected yet — report IS the main artifact
+      criteria.push({ text: 'The agent produces the required report or summary artifact.', weight: '+5', category: 'Task Completion' })
+    }
     criteria.push({ text: 'The report contains the required sections or structure.', weight: '+3', category: 'Instruction Following' })
   }
 
@@ -134,13 +188,13 @@ function generateRubric(prompt) {
     criteria.push({ text: `The output exceeds ${wordLimit[1]} words.`, weight: '-3', category: 'Negative Criterion' })
   }
 
-  // ── always ensure at least one negative criterion ──
+  // ── guarantee at least one negative criterion ──
   const hasNeg = criteria.some(c => c.weight.startsWith('-'))
   if (!hasNeg) {
     criteria.push({ text: 'The agent produces output that omits required content or violates a core constraint.', weight: '-5', category: 'Negative Criterion' })
   }
 
-  // ── group by category ──
+  // ── sort by category order ──
   const ORDER = ['Task Completion', 'Instruction Following', 'Factuality & Hallucination', 'Tool Use', 'Agent Behavior', 'Negative Criterion']
   criteria.sort((a, b) => ORDER.indexOf(a.category) - ORDER.indexOf(b.category))
 
