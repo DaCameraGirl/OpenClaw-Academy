@@ -18,12 +18,26 @@ function compareRuleNums(a, b) {
   return 0
 }
 
+/* ── bold markdown renderer ──────────────────────────── */
+function RichText({ text, className }) {
+  const parts = text.split(/\*\*(.+?)\*\*/g)
+  return (
+    <span className={className}>
+      {parts.map((part, i) =>
+        i % 2 === 1
+          ? <strong key={i} className="text-cyan-300 font-semibold">{part}</strong>
+          : part
+      )}
+    </span>
+  )
+}
+
 /* ── atomic view sub-components ─────────────────────── */
 function RuleRow({ rule }) {
   return (
     <div className="flex gap-3 py-2 border-b border-slate-800/60 last:border-0">
       <span className="text-[11px] text-slate-500 font-mono mt-0.5 min-w-[56px] shrink-0">{rule.num}</span>
-      <span className="text-sm text-slate-300 leading-relaxed">{rule.text}</span>
+      <RichText text={rule.text} className="text-sm text-slate-300 leading-relaxed" />
     </div>
   )
 }
@@ -57,7 +71,7 @@ function NarrativeSection({ section }) {
           {section.items.map((item, i) => (
             <li key={i} className="flex gap-2 text-sm text-slate-300 leading-relaxed">
               <span className="text-slate-600 mt-1 shrink-0">›</span>
-              <span>{item}</span>
+              <RichText text={item} />
             </li>
           ))}
         </ul>
