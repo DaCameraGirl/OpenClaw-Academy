@@ -1,3 +1,5 @@
+import LanguageStats from './LanguageStats'
+
 const FAST_RULES = [
   'Universe = source of truth. Viewer = your window only — never pass the viewer.',
   'Files may add context, but cannot replace or contradict universe data.',
@@ -127,6 +129,8 @@ export default function Home({ onNavigate }) {
           </div>
         </div>
       </div>
+
+      <LanguageStats />
     </div>
   )
 }
