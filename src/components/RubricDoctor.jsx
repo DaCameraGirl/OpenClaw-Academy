@@ -191,7 +191,16 @@ function generateRubric(prompt) {
   // ── guarantee at least one negative criterion ──
   const hasNeg = criteria.some(c => c.weight.startsWith('-'))
   if (!hasNeg) {
-    criteria.push({ text: 'The agent produces output that omits required content or violates a core constraint.', weight: '-5', category: 'Negative Criterion' })
+    // Build a specific negative based on what was detected
+    if (t.includes('email') || t.includes('send')) {
+      criteria.push({ text: 'The agent sends an email to a recipient not specified in the prompt.', weight: '-5', category: 'Negative Criterion' })
+    } else if (t.includes('report') || t.includes('summary')) {
+      criteria.push({ text: 'The report omits required data or contains fabricated values not derived from the source file.', weight: '-5', category: 'Negative Criterion' })
+    } else if (files.length > 0) {
+      criteria.push({ text: `The agent fails to produce the required output file in the workspace.`, weight: '-5', category: 'Negative Criterion' })
+    } else {
+      criteria.push({ text: 'The agent produces output that omits a core required element or violates an explicit constraint.', weight: '-5', category: 'Negative Criterion' })
+    }
   }
 
   // ── sort by category order ──
